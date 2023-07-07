@@ -10,8 +10,11 @@ import RxSwift
 import RxCocoa
 
 class LoginViewModel {
+    
+    //MARK: - Properties
     var emailField: BehaviorSubject<String> = BehaviorSubject(value: "")
     var passwordField: BehaviorSubject<String> = BehaviorSubject(value: "")
+    
     
     
     var isValidEmail: Observable<Bool> {
@@ -27,12 +30,14 @@ class LoginViewModel {
         return Observable.combineLatest(isValidEmail, isValidPassword).map({$0 && $1})
     }
     
+    
 }
 
 
 
-//MARK: - Extension Valid Password
 
+
+//MARK: - Extension Valid Password
 extension String {
     func isValidEmail() -> Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
