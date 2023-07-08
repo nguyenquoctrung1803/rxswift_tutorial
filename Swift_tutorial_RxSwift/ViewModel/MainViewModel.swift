@@ -35,4 +35,22 @@ class MainViewModel {
         }
     }
     
+    func addUser (user: UserModel){
+        guard var user = try? users.value() else {return}
+        user.insert(contentsOf: user, at: 0)
+        users.on(.next(user))
+    }
+    
+    func editUser (title: String, index: Int){
+        guard var user = try? users.value() else {return}
+        user[index].title = title
+        users.on(.next(user))
+    }
+    
+    func deleteUser(index: Int) {
+        guard var user = try? users.value() else {return}
+        user.remove(at: index)
+        users.on(.next(user))
+    }
+    
 }

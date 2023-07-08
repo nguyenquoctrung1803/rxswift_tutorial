@@ -12,13 +12,6 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var labelDetail: UILabel!
     @IBOutlet weak var label: UILabel!
     
-    var items: UserModel! {
-        didSet{
-            setUserData()
-        }
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,11 +21,6 @@ class UserCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    private func setUserData(){
-        label.text = items.title
-        labelDetail.text = String(items.id)
     }
     
 }

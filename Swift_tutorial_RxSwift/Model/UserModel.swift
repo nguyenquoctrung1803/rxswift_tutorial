@@ -11,6 +11,6 @@ import Foundation
 struct UserModel: Codable {
     let userId: Int
     let id: Int
-    let title: String
+    var title: String
     let body: String
 }
